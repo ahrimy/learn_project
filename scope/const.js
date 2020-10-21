@@ -27,6 +27,7 @@ list();
 
 //immutable array
 //뒤로가기, 앞으로가기
+//원본을 바꾸지 않고 새로운 배열로 복사해서 만듬
 const list2 = ['apple', 'orange', 'watermelon'];
 list3 = [].concat(list2, 'banana');
 console.log(list2 === list3);
