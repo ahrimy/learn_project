@@ -26,3 +26,4 @@ var str = 'hello world!!!!';
 for (let value of str) {
   console.log(value);
 }
+//for of는 문자열의 문자를 하나씩 읽어올 수 있다.
