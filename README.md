@@ -1,6 +1,5 @@
 # Javascript study
 javascript 학습 내용 및 코드 정리
-> [Wiki](https://github.com/ahrimy/javascript-study/wiki)
 
 # Contents
 인프런 강의
