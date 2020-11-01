@@ -1,13 +1,18 @@
 import React from "react";
 import Style from "./Button2.module.css";
+import cn from "classnames";
 
 function Button({ size }) {
-  if (size === "big") {
-    return <button className={`${Style.button} ${Style.big}`}>큰 버튼</button>;
-  } else {
-    return (
-      <button className={`${Style.button} ${Style.small}`}>작은 버튼</button>
-    );
-  }
+  const isBig = size === "big";
+  return (
+    <button
+      className={cn(Style.Button, {
+        [Style.big]: isBig,
+        [Style.small]: isBig,
+      })}
+    >
+      {isBig ? "큰 버튼" : "작은 버튼"}
+    </button>
+  );
 }
 export default Button;
