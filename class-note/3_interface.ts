@@ -28,3 +28,21 @@ var sum: sumFunction;
 sum = function (a: number, b: number): number {
     return a + b;
 }
+
+// 인덱싱
+interface StringArray {
+    [index: number]: string;
+}
+
+var arr: StringArray = ['a', 'b', 'c', 'd'];
+
+// 딕셔너리 패턴
+interface stringRegexDictionary {
+    [key: string]: RegExp;
+}
+
+var obj: stringRegexDictionary = {
+    sth: /abc/,
+    cssFile: /\.css$/,
+    jsFile: /\.js$/s
+}
