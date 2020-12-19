@@ -1,5 +1,5 @@
 # Javascript study
-javascript 학습 내용 및 코드 정리
+Javascript 학습 내용 및 코드 정리
 
 # Contents
 인프런 강의
