@@ -1,4 +1,4 @@
-# React study
+# React.js
 React 학습내용 정리 및 코드
 > [Wiki](https://github.com/ahrimy/react-study/wiki)
 
