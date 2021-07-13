@@ -1,10 +1,10 @@
 const path = require('path');
-const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: 'src/index.js',
+  mode: process.env.NODE_ENV || 'development',
+  entry: './src/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve('dist'),
@@ -34,10 +34,20 @@ module.exports = {
       },
     ],
   },
+  devtool: 'inline-source-map',
+  devServer: {
+    port: 8080,
+    compress: true,
+    hot: true,
+    historyApiFallback: true,
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new HTMLWebpackPlugin({
       template: 'src/index.html',
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 };
