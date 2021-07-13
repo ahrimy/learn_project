@@ -1,25 +1,25 @@
-const path = require("path");
-const webpack = require("webpack");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: "src/index.js",
+  entry: 'src/index.js',
   output: {
-    filename: "bundle.js",
-    path: path.resolve("dist"),
-    publicPath: "/",
+    filename: 'bundle.js',
+    path: path.resolve('dist'),
+    publicPath: '/',
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: "babel-loader",
+        use: 'babel-loader',
       },
       {
         test: /\.html$/,
-        use: "html-loader",
+        use: 'html-loader',
       },
       /*Choose only one of the following two: if you're using 
       plain CSS, use the first one, and if you're using a
@@ -30,15 +30,14 @@ module.exports = {
       //   },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
   plugins: [
     new CleanWebpackPlugin(),
-    ,
     new HTMLWebpackPlugin({
-      template: "src/index.html",
+      template: 'src/index.html',
     }),
   ],
 };
