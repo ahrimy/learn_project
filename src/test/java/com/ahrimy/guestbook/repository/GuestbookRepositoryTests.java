@@ -44,7 +44,7 @@ public class GuestbookRepositoryTests {
             Guestbook guestbook = result.get();
 
             guestbook.changeTitle("Changed Title....");
-            guestbook.changeContentt("Changed Content....");
+            guestbook.changeContent("Changed Content....");
 
             guestbookRepository.save(guestbook);
         }
