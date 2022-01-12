@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.6.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+//	id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10' // annotationProcessor 로 대체
 	id 'java'
 	id 'war'
 }
@@ -33,9 +34,34 @@ dependencies {
 	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client'
 	// https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-java8time
 	implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-java8time'
+	// querydsl
+	implementation 'com.querydsl:querydsl-jpa'
+	annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jpa"
+	annotationProcessor "javax.persistence:javax.persistence-api"
+	annotationProcessor "javax.annotation:javax.annotation-api"
 
 }
 
 test {
 	useJUnitPlatform()
 }
+
+// Plugin 사용시 필요
+//def querydslDir = "$buildDir/generated/querydsl"
+//
+//querydsl {
+//	jpa = true
+//	querydslSourcesDir = querydslDir
+//}
+//
+//sourceSets {
+//	main.java.srcDir querydslDir
+//}
+//
+//configurations {
+//	querydsl.extendsFrom compileClasspath
+//}
+//
+//compileQuerydsl {
+//	options.annotationProcessorPath = configurations.querydsl
+//}
