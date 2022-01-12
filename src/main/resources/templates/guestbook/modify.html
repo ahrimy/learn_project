@@ -34,10 +34,24 @@
                 <input type="text" class="form-control" th:value="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" readonly/>
             </div>
 
-            <button type="button" class="btn btn-primary">Modify</button>
+            <button type="button" class="btn btn-primary modifyBtn">Modify</button>
             <button type="button" class="btn btn-info">List</button>
             <button type="button" class="btn btn-danger">Remove</button>
         </form>
+
+        <script th:inline="javascript">
+
+            const actionForm = document.querySelector("form");
+
+            document.querySelector(".modifyBtn")
+                    .addEventListener('click', () => {
+                        if(!confirm("수정하시겠습니까?")) {
+                            return;
+                        }
+                        actionForm.submit();
+                    });
+
+        </script>
     </th:block>
 </th:block>
 </html>
