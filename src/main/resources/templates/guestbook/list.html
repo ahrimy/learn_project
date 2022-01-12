@@ -2,12 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:replace="~{/layout/basic::setContent(~{this::content})}">
     <th:block th:fragment="content">
-        <h1 class="mt-4">GuestBook List Page</h1>
+        <h1 class="mt-4">
+            GuestBook List Page
+            <span>
+                <a th:href="@{/guestbook/register}">
+                    <button type="button" class="btn btn-outline-primary">
+                        REGISTER
+                    </button>
+                </a>
+            </span>
+        </h1>
         <form action="/guestbook/list" method="get" id="searchForm">
             <div class="input-group">
                 <input type="hidden" name="page" value="1" />
                 <div class="input-group-prepend">
-                    <select class="form-select" name="type">
+                    <select class="form-select" name="type" id="searchType" >
                         <option th:selected="${pageRequestDTO.type == null}">------</option>
                         <option value="t" th:selected="${pageRequestDTO.type == 't'}">제목</option>
                         <option value="c" th:selected="${pageRequestDTO.type == 'c'}">내용</option>
@@ -16,7 +25,7 @@
                         <option value="tcw" th:selected="${pageRequestDTO.type == 'tcw'}">제목 + 내용 + 작성자</option>
                     </select>
                 </div>
-                <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}" />
+                <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}" id="searchKeyword" />
                 <div class="input-group-append" id="button-addon4">
                     <button class="btn btn-outline-secondary btn-search" type="button">Search</button>
                     <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>
@@ -61,6 +70,48 @@
                 <a class="page-link" th:href="@{/guestbook/list(page=${result.end+1}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">Next</a>
             </li>
         </ul>
+
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script th:inline="javascript">
+            const msg = [[${msg}]];
+            console.log(msg);
+
+            if(msg) {
+                const modal = new bootstrap.Modal(document.querySelector(".modal"));
+                modal.show();
+            }
+
+            const searchForm = document.getElementById("searchForm");
+
+
+            document.querySelector(".btn-search")
+                    .addEventListener('click', () => searchForm.submit());
+            document.querySelector(".btn-clear")
+                    .addEventListener('click', () => {
+                        document.getElementById("searchType").selectedIndex = 0;
+                        document.getElementById("searchKeyword").value = "";
+                        searchForm.submit();
+                    });
+
+        </script>
     </th:block>
 </th:block>
 </html>
