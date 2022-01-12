@@ -38,8 +38,8 @@
             </div>
 
             <button type="button" class="btn btn-primary modifyBtn">Modify</button>
-            <a th:href="@{/guestbook/list(page=${requestDTO.page}, type=${requestDTO.type}, keyword=${requestDTO.keyword})}">
-                <button type="button" class="btn btn-info">List</button>
+            <a class="btn btn-info" th:href="@{/guestbook/list(page=${requestDTO.page}, type=${requestDTO.type}, keyword=${requestDTO.keyword})}">
+              List
             </a>
             <button type="button" class="btn btn-danger removeBtn">Remove</button>
         </form>
