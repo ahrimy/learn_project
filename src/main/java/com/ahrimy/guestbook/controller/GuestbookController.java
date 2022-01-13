@@ -46,7 +46,7 @@ public class GuestbookController {
 
         Long gno = service.register(dto);
 
-        redirectAttributes.addFlashAttribute("msg", gno);
+        redirectAttributes.addFlashAttribute("msg", gno + " 등록 완료!");
 
         return "redirect:/guestbook/list";
     }
@@ -83,7 +83,7 @@ public class GuestbookController {
 
         service.remove(gno);
 
-        redirectAttributes.addFlashAttribute("msg", gno);
+        redirectAttributes.addFlashAttribute("msg", gno + " 삭제 완료!");
 
         return "redirect:/guestbook/list";
     }
