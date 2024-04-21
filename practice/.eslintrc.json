@@ -1,0 +1,31 @@
+{
+    "plugins": [
+        "prettier"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended",
+        "react-app"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "ignorePatterns": [
+        "node_modules/"
+    ],
+    "rules": {
+        "prettier/prettier": "error",
+        "no-var": "error",
+        "no-unused-vars": "warn",
+        "no-console": "warn"
+    }
+}
